@@ -1,0 +1,90 @@
+*********将代码推送到github上**********
+git  clone  链接     //把github上的项目克隆到本地
+
+git init   //初始化本地仓库
+
+git add .   //.表示提交所有代码
+
+git add 文件名  //表示提交单个文件
+
+git commit  -m  “first commit”    //表示提交代码并编写注释
+
+git push -u origin “main”  //以前的提示一直是 git push --set-upstream origin master ，而现在变为了git push -u origin main，即新建的仓库的默认分支从master变成了main，且指令从git push --set-upstream变为了git push -u，有什么区别？
+其实git push -u是git push --set-upstream的缩写版本啦~ ，哈哈哈，至于origin，就是远程仓库的别名啦，只不过github把远程仓库的名称默认称为origin，你也可以改为其他名称，就像github之前仓库的默认分支是叫做master，而现在github把它改为了main。
+
+git remote rm origin 将原来的项目抹去
+
+git remote add origin ssh或者HTTPS地址
+
+
+
+
+
+
+**********将github上的代码推送到本地*********
+
+###方法一：
+
+git remote add upstream <原仓库github地址>
+
+git remote -v   //查看当前仓库与原仓库地址
+
+git fetch upstream   //获取原仓库更新，使用fetch更新，fetch后会被存储在一个本地分支upstream/master上
+
+git merge upstream/master    //合并到本地分支，切换到本地master分支，合并upstream/master分支
+
+git log     //查看原仓库的更新
+
+
+git push origin master    //如果需要自己github上的fork的仓库需要保持同步更新，执行git push进行推送
+
+
+###方法二：
+git remote -v     //查看远程分支
+git fetch origin master:temp    //使用如下命令可以在本地新建一个temp分支，并将远程origin仓库的master分支代码下载到本地temp分支
+git diff temp     //比较本地代码与刚刚从远程下载下来的代码的区别
+git merge temp    //对比区别之后，如果觉得没有问题，进行代码合并
+git branch -d temp     //如果temp分支不想要保留，删除该分支
+
+
+
+###方法三：
+git pull的作用是，从远程库中获取某个分支的更新，再与本地指定的分支进行自动merge。完整格式是：
+$ git pull <远程库名> <远程分支名>:<本地分支名>
+
+比如，取回远程库中的develop分支，与本地的develop分支进行merge，要写成：
+git pull origin develop:develop
+
+如果是要与本地当前分支merge，则冒号后面的<本地分支名>可以不写。
+git pull origin develop
+
+其实，git pull 命令等同于先做了git fetch ，再做了git merge。即：
+git fetch origin develop
+git checkout develop
+git merge origin/develop
+或者：
+git fetch origin master:tmp
+git diff tmp 
+git merge tmp
+git branch -d tmp
+
+
+
+
+
+*********git 分支**********
+
+git remote -v  查看项目远程分支
+
+git branch  -a  查看远程项目所有分支
+
+git log  查看历史所有提交信息
+
+git status  检查下修改了什么内容
+
+git remote show origin  查看当前项目基本信息
+
+git checkout branchName  //切换分支
+
+git checkout -b newBranch     //创建分支并切换  git branch newBranch         git checkout newBranch   
+该命令的完全体为git checkout -b|-B <new_branch> [<start point>]      参考网站：   https://blog.csdn.net/hb1993/article/details/125866995
