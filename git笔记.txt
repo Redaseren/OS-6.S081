@@ -88,3 +88,10 @@ git checkout branchName  //切换分支
 
 git checkout -b newBranch     //创建分支并切换  git branch newBranch         git checkout newBranch   
 该命令的完全体为git checkout -b|-B <new_branch> [<start point>]      参考网站：   https://blog.csdn.net/hb1993/article/details/125866995
+
+
+//取消http代理
+git config --global --unset http.proxy
+//取消https代理 
+git config --global --unset https.proxy
+
