@@ -26,7 +26,7 @@ exec(filename,*argv): 加载并执行一个文件，常用于在子程序中执�
 
 fork(): 可以用来创建子进程，对于父进程返回子进程的pid(process identifier)，对于子进程返回0；
 exit(): 退出当前进程；
-wait(): 等待子进程结束；
+wait(): 等待子进程结束；id_t wait(int *stat_loc);stat_loc用来存一些信息的, 如果不需要, 设为空即可.但为了防止编译器告警, 所以用(int*)0, 或者用NULL也可以.
 kill(pid): 结束pid所指进程；
 read(fd, buf, n);  从fd中读取最多n个字节，并将其拷贝到buf中，返回读取的字节数。
 write(fd, buf, n)：写buf中的n个字节到fd中，返回实际写入到buf中的字节数
