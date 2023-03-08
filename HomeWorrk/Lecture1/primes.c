@@ -21,7 +21,6 @@ int main(int argc, char * argv[]){
 		
 		close(p1[1]);
 		wait(int*(0));
-		
 	}
 	exit(0);
 }
